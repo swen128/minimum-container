@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  app:
+    image: golang:1.15.1-buster
+    working_dir: /work_dir
+    command: bash
+    volumes:
+      - .:/work_dir
+    privileged: true
+    hostname: linux-host
