@@ -28,6 +28,10 @@ func execute(cmd string, args ...string) {
 	command.Stdout = os.Stdout
 	command.Stderr = os.Stderr
 
+	command.SysProcAttr = &unix.SysProcAttr{
+		Cloneflags: unix.CLONE_NEWNS | unix.CLONE_NEWPID | unix.CLONE_NEWUTS,
+	}
+
 	must(command.Run())
 }
 
